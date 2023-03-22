@@ -56,5 +56,9 @@ plt.show()
 
 # 예측값 vs 실제값
 y_pred = reg.predict(X_norm)
-plt.scatter(y, y_pred)
-plt.show()
+plt.scatter(y, y_pred) # 완벽한 예측 x
+plt.show() 
+
+# 비용계산
+import numpy as np
+np.sqrt(np.sum((y - y_pred)**2)/ y.count())
