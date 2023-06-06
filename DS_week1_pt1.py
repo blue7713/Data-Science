@@ -2,20 +2,25 @@
 # pandas 열 선택
 # pandas csv(엑셀형태의 파일,Comma seperated value) 불러오기
 # pandas 연산
+import matplotlib.pyplot as plt
 import pandas as pd
+pd.options.display.max_columns = None  # 모든 열 출력
+pd.options.display.width = None  # 자동으로 줄바꿈하지 않고 출력
+pd.options.display.max_colwidth = None  # 열 너비 제한 없이 출력.
 
-df=pd.read_csv('https://raw.githubusercontent.com/ralbu85/DataScience_2022S/master/data/heart.csv')
+df = pd.read_csv(
+    'https://raw.githubusercontent.com/ralbu85/DataScience_2022S/master/data/heart.csv')
 print(df)
 
 # 데이터프레임 기능
-print(df.describe()) # 데이터프레임의 기초 통계량 계산(열별)
-print(df.head()) # 첫 다섯줄
-print(df.tail()) # 마지막 다섯줄
-print(df.T.head()) # T는 행과열이 바뀜
+print(df.describe())  # 데이터프레임의 기초 통계량 계산(열별)
+print(df.head())  # 첫 다섯줄
+print(df.tail())  # 마지막 다섯줄
+print(df.T.head())  # T는 행과열이 바뀜
 
 # 열 선택하기
 # df['칼럼명']
-print(df['Age']) # 전체 데이터 중 Age 열만 고름
+print(df['Age'])  # 전체 데이터 중 Age 열만 고름
 x = df['Sex']
 print(x)
 
@@ -27,9 +32,9 @@ x = df[['Age', 'Sex', 'AHD']]
 print(x)
 
 # 열선택을 프로그래밍으로
-colums = df.columns # 데이터 변수명들을 리스트(인덱스) 형태로 반환
+colums = df.columns  # 데이터 변수명들을 리스트(인덱스) 형태로 반환
 print(colums)
-print(colums[0:5]) # 0번째부터 4번째까지
+print(colums[0:5])  # 0번째부터 4번째까지
 print(df[colums[:5]])
 
 # 리스트 컴프리헨션
@@ -38,7 +43,8 @@ print(df[[i for i in colums if i.startswith('C')]])
 
 # 연습문제
 # 지금까지 했던 작업을 auto.csv 파일을 불러들여서 반복하시오
-df1 = pd.read_csv('https://raw.githubusercontent.com/ralbu85/DataScience_2022S/master/data/auto.csv')
+df1 = pd.read_csv(
+    'https://raw.githubusercontent.com/ralbu85/DataScience_2022S/master/data/auto.csv')
 print(df1)
 
 print(df1.describe())
@@ -55,7 +61,6 @@ print(df1[[i for i in colum1 if i.startswith('h')]])
 
 # 그래프 그리기(Matplotlib)
 # line plot(선형 그래프), Scatter plot(산점도), Histogram, 그 외
-import matplotlib.pyplot as plt
 
 # 선형그래프(lineplot)
 x = [1, 7, 5, 2, 5]
@@ -89,10 +94,10 @@ plt.show()
 plt.hist(df['Age'])
 plt.show()
 
-plt.hist(df['Age'], bins = 20) # 20개의 구간으로 그림
+plt.hist(df['Age'], bins=20)  # 20개의 구간으로 그림
 plt.show()
 
-# 연습문제 
+# 연습문제
 # 지금까지 했던 작업을 auto.csv 파일을 불러들여서 반복하시오
 age1 = df1['cylinders']
 bp1 = df1['displacement']
@@ -103,5 +108,5 @@ plt.show()
 plt.hist(df1['displacement'])
 plt.show()
 
-plt.hist(df1['displacement'], bins = 10)
+plt.hist(df1['displacement'], bins=10)
 plt.show()
