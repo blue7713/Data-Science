@@ -25,6 +25,7 @@ result = cross_validate(X=X.reshape(-1, 1), # X데이터
                         cv=kfold, # 교차검증 방식
                         return_train_score=True)
 
+# 딕셔너리에 결과값이 저장되어 있다.
 print(result)
 
 # 결과의 사용
